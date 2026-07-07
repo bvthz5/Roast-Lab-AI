@@ -1,5 +1,9 @@
 version: '3.8'
 
+networks:
+  roastlab-net:
+    driver: bridge
+
 services:
   backend:
     build:
@@ -11,12 +15,28 @@ services:
       - "8000:8000"
     environment:
       - ENVIRONMENT=development
+      - DATABASE_URL=postgresql+asyncpg://postgres:password@db:5432/roastlab
+      - REDIS_URL=redis://redis:6379/0
+      - QDRANT_URL=http://qdrant:6333
+      - OLLAMA_BASE_URL=http://ollama:11434
     volumes:
       - ./backend:/app
+    networks:
+      - roastlab-net
     depends_on:
-      - db
-      - redis
-      - qdrant
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+      ollama:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   frontend:
     build:
@@ -31,8 +51,11 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
+    networks:
+      - roastlab-net
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
   db:
     image: postgres:15-alpine
@@ -46,6 +69,13 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - roastlab-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d roastlab"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: redis:7-alpine
@@ -55,6 +85,13 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+    networks:
+      - roastlab-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   qdrant:
     image: qdrant/qdrant:latest
@@ -64,6 +101,8 @@ services:
       - "6333:6333"
     volumes:
       - qdrant_data:/qdrant/storage
+    networks:
+      - roastlab-net
 
   ollama:
     image: ollama/ollama:latest
@@ -73,6 +112,8 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+    networks:
+      - roastlab-net
 
   pgadmin:
     image: dpage/pgadmin4
@@ -83,6 +124,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "5050:80"
+    networks:
+      - roastlab-net
     depends_on:
       - db
 
@@ -92,6 +135,8 @@ services:
     restart: unless-stopped
     ports:
       - "8001:5540"
+    networks:
+      - roastlab-net
     depends_on:
       - redis
 
