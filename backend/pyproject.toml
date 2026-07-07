@@ -1,37 +1,39 @@
-[tool.poetry]
+[project]
 name = "roastlab-backend"
 version = "0.1.0"
 description = "Backend for RoastLab AI"
-authors = ["RoastLab Team"]
+authors = [
+    { name = "RoastLab Team" }
+]
 readme = "README.md"
-packages = [{include = "app"}]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.5.3",
+    "pydantic-settings>=2.1.0",
+    "sqlalchemy>=2.0.25",
+    "alembic>=1.13.1",
+    "asyncpg>=0.29.0",
+    "redis>=5.0.1",
+    "qdrant-client>=1.7.0",
+    "llama-index>=0.9.39",
+    "structlog>=24.1.0"
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-fastapi = "^0.109.0"
-uvicorn = {extras = ["standard"], version = "^0.27.0"}
-pydantic = "^2.5.3"
-pydantic-settings = "^2.1.0"
-sqlalchemy = "^2.0.25"
-alembic = "^1.13.1"
-psycopg2-binary = "^2.9.9"
-redis = "^5.0.1"
-llama-index = "^0.9.36"
-qdrant-client = "^1.7.1"
-spacy = "^3.7.2"
-transformers = "^4.37.0"
-tree-sitter = "^0.20.4"
-python-multipart = "^0.0.6"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.0.0"
-ruff = "^0.1.14"
-bandit = "^1.7.6"
-black = "^24.1.1"
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.14",
+    "black>=23.12.1",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.8.0",
+    "bandit>=1.7.7"
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.ruff]
 line-length = 88
@@ -44,3 +46,8 @@ ignore = []
 [tool.black]
 line-length = 88
 target-version = ['py312']
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+ignore_missing_imports = true

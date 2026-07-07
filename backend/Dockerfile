@@ -2,23 +2,18 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends gcc libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Copy dependencies first for caching
+COPY pyproject.toml README.md ./
 
-RUN pip install poetry==1.7.1
+# Install dependencies using uv
+RUN uv pip install --system -e .
 
-COPY pyproject.toml ./
-# COPY poetry.lock* ./ # Uncomment when lock file exists
-
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-interaction --no-ansi --no-root
-
-COPY . .
+# Copy application source code
+COPY ./app ./app
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
