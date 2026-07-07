@@ -33,9 +33,9 @@ services:
       ollama:
         condition: service_started
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 5s
+      timeout: 2s
       retries: 3
 
   frontend:
@@ -66,7 +66,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: roastlab
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -82,7 +82,7 @@ services:
     container_name: roastlab_redis
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "6380:6379"
     volumes:
       - redis_data:/data
     networks:
@@ -98,7 +98,7 @@ services:
     container_name: roastlab_qdrant
     restart: unless-stopped
     ports:
-      - "6333:6333"
+      - "6335:6333"
     volumes:
       - qdrant_data:/qdrant/storage
     networks:
