@@ -5,14 +5,14 @@ from redis.asyncio import Redis
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.application.dto.base import BaseResponse
-from app.infrastructure.database.session import get_db_session
-from app.presentation.api.dependencies import (
+from src.application.dto.base import BaseResponse
+from src.infrastructure.database.session import get_db_session
+from src.presentation.api.dependencies import (
     get_ollama,
     get_qdrant,
     get_redis,
 )
-from app.shared.response import success_response
+from src.shared.response import success_response
 
 router = APIRouter()
 

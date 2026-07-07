@@ -1,7 +1,7 @@
 import structlog
 from redis.asyncio import Redis, from_url
 
-from app.shared.config import settings
+from src.shared.config import settings
 
 logger = structlog.get_logger("infrastructure.redis")
 

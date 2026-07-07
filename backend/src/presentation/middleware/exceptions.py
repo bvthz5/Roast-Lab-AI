@@ -6,7 +6,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from app.domain.exceptions.base import DomainError
+from src.domain.exceptions.base import DomainError
 
 logger = structlog.get_logger("presentation.middleware.exceptions")
 

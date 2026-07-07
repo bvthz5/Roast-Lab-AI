@@ -4,14 +4,14 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.infrastructure.ollama.client import ollama_manager
-from app.infrastructure.qdrant.client import qdrant_manager
-from app.infrastructure.redis.client import redis_client
-from app.observability.logging import configure_logging
-from app.presentation.api.v1.router import api_v1_router
-from app.presentation.middleware.exceptions import register_exception_handlers
-from app.presentation.middleware.logging import LoggingMiddleware
-from app.shared.config import settings
+from src.infrastructure.ollama.client import ollama_manager
+from src.infrastructure.qdrant.client import qdrant_manager
+from src.infrastructure.redis.client import redis_client
+from src.observability.logging import configure_logging
+from src.presentation.api.v1.router import api_v1_router
+from src.presentation.middleware.exceptions import register_exception_handlers
+from src.presentation.middleware.logging import LoggingMiddleware
+from src.shared.config import settings
 
 
 @asynccontextmanager

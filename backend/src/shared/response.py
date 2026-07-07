@@ -2,7 +2,7 @@ import datetime
 
 import structlog
 
-from app.application.dto.base import BaseResponse, ResponseMetadata
+from src.application.dto.base import BaseResponse, ResponseMetadata
 
 
 def success_response[T](

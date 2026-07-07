@@ -1,7 +1,7 @@
 import structlog
 from qdrant_client import AsyncQdrantClient
 
-from app.shared.config import settings
+from src.shared.config import settings
 
 logger = structlog.get_logger("infrastructure.qdrant")
 

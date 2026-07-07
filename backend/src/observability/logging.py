@@ -4,7 +4,7 @@ from typing import Any
 
 import structlog
 
-from app.shared.config import settings
+from src.shared.config import settings
 
 
 def configure_logging() -> None:

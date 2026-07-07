@@ -2,9 +2,9 @@ from httpx import AsyncClient
 from qdrant_client import AsyncQdrantClient
 from redis.asyncio import Redis
 
-from app.infrastructure.ollama.client import ollama_manager
-from app.infrastructure.qdrant.client import qdrant_manager
-from app.infrastructure.redis.client import redis_client
+from src.infrastructure.ollama.client import ollama_manager
+from src.infrastructure.qdrant.client import qdrant_manager
+from src.infrastructure.redis.client import redis_client
 
 
 async def get_redis() -> Redis:

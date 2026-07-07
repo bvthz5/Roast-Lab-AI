@@ -1,7 +1,7 @@
 import httpx
 import structlog
 
-from app.shared.config import settings
+from src.shared.config import settings
 
 logger = structlog.get_logger("infrastructure.ollama")
 
