@@ -7,9 +7,9 @@
 ### *Your code gets roasted. You get better.*
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square)](LICENSE)
-[![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Python Version](https://img.shields.io/badge/Python-3.12%2B-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Next.js](https://img.shields.io/badge/Next.js-13+-black?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
 
@@ -109,7 +109,7 @@ RoastLab AI is built on a modern, modular stack designed to handle demanding AI 
 
 | Category | Technologies | Description |
 | :--- | :--- | :--- |
-| **Frontend** | Next.js, React, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion, Monaco Editor | High-performance user interface featuring syntax-highlighted code editors and animations. |
+| **Frontend** | React 19, Vite, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Monaco Editor | High-performance Single Page Application (SPA) with syntax-highlighted editors and animations. |
 | **Backend** | FastAPI, Python, Pydantic, Uvicorn | Asynchronous Python framework providing fast, type-safe API services. |
 | **Large Language Models** | Ollama, Llama 3, Qwen, DeepSeek | Powering the analytical reasoning and creative comedy engine. |
 | **Retrieval & RAG** | LlamaIndex | Orchestrating document ingestion, chunking, and contextual query execution. |
