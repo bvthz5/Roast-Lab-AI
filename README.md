@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="assets/banner.png" alt="RoastLab AI Banner" width="100%" />
+<img src="project-assets/banner.png" alt="RoastLab AI Banner" width="100%" />
 
 ### *Your code gets roasted. You get better.*
 

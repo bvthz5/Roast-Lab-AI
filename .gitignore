@@ -1,0 +1,114 @@
+# -------------------------
+# Operating System
+# -------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# -------------------------
+# IDE / Editors
+# -------------------------
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.iml
+
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# -------------------------
+# Node
+# -------------------------
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.npm/
+.pnpm-store/
+
+# -------------------------
+# Environment
+# -------------------------
+.env
+.env.*
+!.env.example
+
+# -------------------------
+# Logs
+# -------------------------
+logs/
+*.log
+
+# -------------------------
+# Database
+# -------------------------
+*.db
+*.sqlite
+*.sqlite3
+
+# -------------------------
+# Docker
+# -------------------------
+docker-data/
+
+# -------------------------
+# Build
+# -------------------------
+build/
+dist/
+
+# -------------------------
+# AI Models
+# -------------------------
+models/
+embeddings/
+vector_store/
+qdrant_storage/
+
+# -------------------------
+# Cache
+# -------------------------
+.cache/
+.redis/
+__cache__/
+
+# -------------------------
+# Temporary Files
+# -------------------------
+tmp/
+temp/
+
+# -------------------------
+# Testing
+# -------------------------
+.pytest_cache/
+coverage.xml
+
+# -------------------------
+# Documentation
+# -------------------------
+*.md
+!README.md
+
+# -------------------------
+# Misc
+# -------------------------
+*.swp
+*.swo
+
+# Test Companion onboarding (local, per-machine)
+.test-companion/
